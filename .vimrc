@@ -26,9 +26,11 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim.git'
 Bundle 'css_color.vim'
 Bundle 'hokaccha/vim-html5validator'
+Bundle 'itchyny/lightline.vim'
 
 "#####表示設定#####
 set number "行番号を表示する
+set cursorline "カーソル行の背景色を変える
 set title "編集中のファイル名を表示
 set showmatch "括弧入力時の対応する括弧を表示
 syntax enable "コードの色分け
@@ -38,6 +40,7 @@ set smartindent "オートインデント
 set smartcase "新しい行を作った時に高度な自動インデントを行なう
 set autoindent "新しい行のインデントを現在業と同じにする
 set wildmode=longest:full,list
+set laststatus=2
 
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
@@ -49,12 +52,7 @@ set completeopt=menuone
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
 	exec "imap " . k . " " . k . "<C-N><C-P>"
 endfor
-
 imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
-
-"入力モード時、ステータスラインのカラーを変更
-augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
-augroup END
+let g:lightline = {
+      \ 'colorscheme': 'solarized'
+      \ }
